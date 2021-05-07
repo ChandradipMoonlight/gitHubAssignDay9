@@ -2,22 +2,26 @@
 
 echo Welcome to Employee Wage Coputation Program on Manin Branch.
 
-checkEmp=$((RANDOM%3))
-
+empPresent=1
+empAbsent=0
 empRate=20
 
-case $checkEmp in
-	1)
-		empHr=8
-		echo "Employee is Present" ;;
-	0)
-		empHr=0
-		echo "Employee is Absent" ;;
-	*)
-		empHr=4
-		echo "Employee has taken halfday"
-esac
+totalWorkingDays=20
 
-empDailyWage=$(($empRate*$empHr))
+for ((i=1; i<=20; i++))
+do
+	checkEmp=$((RANDOM%3))
+	case $checkEmp in
+		$empPresent)
+			empHr=8 ;;
+		$empAbsent)
+			empHr=0 ;;
+		*)
+			empHr=4 ;;
+	esac
+	totalEmpHr=$(($totalEmpHr+$empHr))
+done
 
-echo "Wage of the day  of emp is : $empDailyWage"
+totalWageForMonth=$(($totalEmpHr*$empRate))
+
+echo "Total Wage for month is = $totalWageForMonth Rs"
