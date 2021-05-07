@@ -5,12 +5,17 @@ echo Welcome to Employee Wage Coputation Program on Manin Branch.
 empPresent=1
 empAbsent=0
 empRate=20
+maxEmpHr=100
+maxWorkingDays=20
 
-totalWorkingDays=20
+totalEmpHr=0
+totalWorkingDays=0
 
-for ((i=1; i<=20; i++))
+while [ $totalEmpHr -lt $maxEmpHr ] && [ $totalWorkingDays -lt $maxWorkingDays ]
 do
 	checkEmp=$((RANDOM%3))
+
+	totalWorkingDays=$(($totalWorkigDays+1))
 	case $checkEmp in
 		$empPresent)
 			empHr=8 ;;
@@ -22,6 +27,6 @@ do
 	totalEmpHr=$(($totalEmpHr+$empHr))
 done
 
-totalWageForMonth=$(($totalEmpHr*$empRate))
+totalWage=$(($totalEmpHr*$empRate))
 
-echo "Total Wage for month is = $totalWageForMonth Rs"
+echo "Total Wage is = $totalWage Rs"
