@@ -34,8 +34,11 @@ do
 	empHr="$( getWorkingHr $checkEmp )"
 
 	totalEmpHr=$(($totalEmpHr+$empHr))
+	dailyWage=$(($empHr*$empRate))
+	echo "daily wage = $dailyWage"
 done
 
 totalWage=$(($totalEmpHr*$empRate))
 
 echo "Total Wage is = $totalWage Rs"
+m
